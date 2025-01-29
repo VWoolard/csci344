@@ -1,4 +1,17 @@
 body {
-    background-color: darkcyan;
-    
+    background-color:#f0d8fd;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
 }
+
+header h1 {
+    padding: 50px;
+    text-align: center;
+    background-color: #7f32a8;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
