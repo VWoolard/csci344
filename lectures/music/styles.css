@@ -1,0 +1,35 @@
+head {
+    background-color:#B6D0F7;
+    padding: 30px;
+}
+body {
+    text-align: center;
+    font-family:cursive;
+    font-size: 20px;
+    margin: 20px;;
+    background-color:#F6F5EE;
+}
+
+
+h1 {
+    margin: 0;
+    padding:30px;
+    font-size: 30px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    transition: all 0.2s;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-size: larger;
+}
+
+.music-section:hover iframe {
+    opacity: 1;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate */
+    transform: scale(1.05, 1.05);
+
+}
