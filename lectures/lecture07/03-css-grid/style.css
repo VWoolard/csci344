@@ -33,31 +33,61 @@ body {
 /* Task 3 */
 
 .container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  row-gap: 2vh;
+  column-gap: 2vh;
+  margin-top: 2vh;
 }
 
 header {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 nav {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row: 2 / span 1;
 }
 
 aside {
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 2;
 }
 
 section {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 2;
 }
 
 main {
+  grid-column: 2 / span 1;
+  min-height: 70vh;
 }
 
 footer {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 
 
 @media (max-width: 1020px) {
+  .container {
+    row-gap: 1vh;
+    column-gap: 1vh;
+    margin-top: 1vh;
+    grid-template-columns: 20% 58% 20%;
+  }
 }
 
 
 @media (max-width: 720px) {
+  .container {
+    row-gap: 0.5vh;
+    column-gap: 0.5vh;
+    margin-top: 0.5vh;
+    grid-template-columns: 20% 58% 20%;
+  }
 }

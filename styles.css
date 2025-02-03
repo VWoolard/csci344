@@ -5,6 +5,9 @@ header {
     border-style: double; 
     border-width: 5px;
     font-size: 30px;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 header h2 {

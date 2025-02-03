@@ -34,3 +34,13 @@ main {
 main {
     padding: 0 15vw;
 }
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: hotpink;
+    align-items: center;
+}
