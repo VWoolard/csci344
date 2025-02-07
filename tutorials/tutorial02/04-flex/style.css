@@ -9,31 +9,32 @@ body * {
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 /* create additional rules below:  */
 
-.home {
+section {
     display: flex;
     height: 100vh;
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
-.bio {
-    display: flex;
-    height: 100vh;
+#home {
+    background-color: lightblue;
+    color: black;
 }
 
-.portfolio {
-    display: flex;
-    height: 100vh;
+#bio {
+    background-color: powderblue;
 }
 
-.contact {
-    display: flex;
-    height: 100vh;
+#portfolio {
+    background-color: blue;
+}
+
+#contact {
+    background-color: darkblue;
 }
