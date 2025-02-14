@@ -12,14 +12,14 @@
 
     <nav>
         <h1>Photo App</h1>
-        <section id="navigating"> 
+        <section class="navigating"> 
             <p>gibsonjack</p>
-            <p style = "color: blue">Sign out</p>
+            <a href="">Sign out</a>
         </section>
     </nav>
 
     <main class="display">
-        <section id="scrolling">
+        <section class="stories">
             <div> <img src="mountaintop.jpg" alt="Mountain Top">
                 <p>gibsonjack</p></div>
             <div> <img src="mountaintop.jpg" alt="Mountain Top">
@@ -32,21 +32,85 @@
                 <p>gibsonjack</p></div>
         </section>
 
-        <section id="recommendations">
-        <img src="mountaintop.jpg" alt="Mountain Top">
-        </section>
 
-        <section id="post"> 
-            <div>
+        <section class="post"> 
+            <div class = "postheader">
                 <p style="padding-left:10px;">gibsonjack</p>
                 <p style="padding-right:10px;">...</p>
             </div>
             <img src="mountaintop.jpg" alt="Mountain Top">
-            <i class="fa-solid fa-heart"></i>
-            <i class="fa-solid fa-comment"></i>
-            <i class="fa-solid fa-paper-plane"></i>
+            <div class = "postbuttons">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+            </div>
+            <div class="postbuttonright">
+                <i class="fa-regular fa-bookmark"></i>
+            </div>
+            <div class="likesnumber"></div>
+            <br>
+            <p style="padding-right:10px;">30 likes</p>
         </section> 
     </main>
+
+    <section class="recommendations">
+        <div class="yourprofile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <p style="padding-left:10px;font-size:30px;">gibsonjack</p>
+        </div>
+        <p style="padding-left:10px;font-size:20px; color:#747474;">Suggestions for you</p>
+        <div class="otherprofiles">
+            <!-- amandahudons -->
+            <div class="profile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <div>
+            <p style="padding-left:10px;font-size:18px; color:black;"> <strong>amandahudson</strong></p>
+            <p style="padding-left:10px;font-size:13px; color:#747474;">suggested for you</p>
+            </div>
+            <p style="margin-left: 5; font-size:15px; color:blue;">follow</p>
+            </div>
+            <!-- robertsonkristen -->
+
+            <div class="profile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <div>
+            <p style="padding-left:10px;font-size:18px; color:black;"> <strong>robertsonkristen</strong></p>
+            <p style="padding-left:10px;font-size:13px; color:#747474;">suggested for you</p>
+            </div>
+            <p style="margin-left: 5; font-size:15px; color:blue;">follow</p>
+            </div>
+
+            <!-- qthornton -->
+            <div class="profile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <div>
+            <p style="padding-left:10px;font-size:18px; color:black;"> <strong>qthornton</strong></p>
+            <p style="padding-left:10px;font-size:13px; color:#747474;">suggested for you</p>
+            </div>
+            <p style="margin-left:5; font-size:15px; color:blue;">follow</p>
+            </div>
+
+            <!-- ynelson -->
+            <div class="profile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <div>
+            <p style="padding-left:10px;font-size:18px; color:black;"> <strong>ynelson</strong></p>
+            <p style="padding-left:10px;font-size:13px; color:#747474;">suggested for you</p>
+            </div>
+            <p style="margin-left: 5; font-size:15px; color:blue;">follow</p>
+            </div>
+
+            <!-- lauralyons -->
+            <div class="profile">
+            <img src="mountaintop.jpg" alt="Mountain Top">
+            <div>
+            <p style="padding-left:10px;font-size:18px; color:black;"> <strong>lauralyons</strong></p>
+            <p style="padding-left:10px;font-size:13px; color:#747474;">suggested for you</p>
+            </div>
+            <p style="margin-left: 5; font-size:15px; color:blue;">follow</p>
+            </div>
+         </div>
+        </section>
 </body>
 
 </html>

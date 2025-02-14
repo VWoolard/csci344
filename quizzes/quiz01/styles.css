@@ -1,0 +1,85 @@
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 10px;
+}
+
+h1, h2, h3 {
+    font-family: Passion One;
+}
+
+header,
+main,
+footer {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+header {
+    padding: 40px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #013672;
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+
+}
+
+header a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+
+header img,
+footer img {
+    width: 200px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 20px;
+    gap: 20px;
+    border: solid, lightgray;
+}
+
+.card img {
+    width: 11.5vw;
+}
+
+@media (max-width: 800px) {
+    .cards {
+        grid-template-columns: auto;
+    }
+
+    .card img {
+        width: 20vw;
+    }
+
+    nav {
+        display: none;
+    }
+}

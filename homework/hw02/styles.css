@@ -18,6 +18,8 @@ nav {
     background-color: white;
     flex-direction: row;
     position: sticky; 
+    top: 0;
+    left: 0;
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
@@ -25,68 +27,131 @@ nav {
     border: solid, lightgray;
 }
 
-main {
+/* main {
     padding: 0 15vw;
-}
+} */
 
 h1 {
     top: 0;
     left: 0;
 }
 
-#navigating {
+.navigating {
     display: flex;
     flex-direction: row;
     top: 0;
     right: 20px;
     gap: 10px;
     justify-content: flex-start;
+    align-items: center;
     padding: 10px;
 }
 
+/* .navigating a {
+    top: 0;
+    align-items: center;
+    right: 20px;
+    gap: 10px;
+    padding: 10px;
+    padding-bottom: 0;
+    margin: 0;
+} */
+
 .display {
-    display: grid;
-    grid-template-columns: 60% 40%;
+    /* display: grid;
+    grid-template-columns: 60% 40%; */
     padding-top: 20px;
-    padding-left: 100px;
+    padding-left: 5vw;
+    margin-right: 43vw;
     
 }
 
-#scrolling {
+.stories {
     border: solid, white;
     background-color: white;
-    display: grid;
-    padding-left: 10px;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
     align-items: center;
     margin-right: 1px;
-    grid-template-columns: 15% 15% 15% 15% 15%;
-
 }
 
-#scrolling div {
+.stories div {
     display: grid;
-    grid-template-rows: 50% 25%;
+    grid-template-rows: auto auto;
     font-size: 10px;
     align-items: center;
     margin-right: 1px;
     color: gray;
 }
 
-#scrolling img {
+.stories p {
+    margin: 0;
+}
+
+.stories img {
     border-radius: 50%;
     width: 50px;
     height:50px;
+    object-fit: cover;
     border: solid, lightgray;
 
 }
 
-#recommendations {
-    margin: 10px;
+.recommendations {
+    margin-right: 10px;
+    position: fixed;
+    top: 100px;
+    left: 58vw;
+    width: 40vw;
 }
 
-#post {
+.yourprofile {
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  
+}
+
+.yourprofile img {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+
+.otherprofiles img {
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    
+
+}
+
+.otherprofiles {
+    
+}
+
+.otherprofiles div {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.otherprofiles div p {
+    margin: 0px;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 10% 50% 40%;
+    align-items: center;
+}
+
+.post {
     margin-top: 10px;
-    border: solid, white;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -95,21 +160,44 @@ h1 {
 }
 
 
-#post img {
+.post img {
     width: 100%;
-    height: 400px;
+    object-fit: cover;
 }
 
-#post div {
+/* .post div {
     display: flex;
     flex-direction: row;
    justify-content: space-between;
+} */
+
+.postheader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-#recommendations img {
-    border-radius: 50%;
-    width: 75px;
-    height: 75px;
+.postbuttons {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
 }
 
+.postbuttonright {
+    justify-self: end;
+    padding: 5px;
 
+}
+a {
+    color: blue;
+}
+
+@media (max-width: 800px) {
+    .recommendations {
+       display: none;
+    }
+
+    .display {
+        margin-right: 5vw;
+    }
+ }
