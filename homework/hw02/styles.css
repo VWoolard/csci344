@@ -10,7 +10,7 @@ body * {
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background-color: lightgray;
+    background-color: #eeeeee;
 }
 
 nav {
@@ -47,6 +47,14 @@ h1 {
     padding: 10px;
 }
 
+h1, h2 {
+    font-family: Comfortaa;
+}
+
+h2 {
+    font-size: 15px;
+}
+
 /* .navigating a {
     top: 0;
     align-items: center;
@@ -67,9 +75,9 @@ h1 {
 }
 
 .stories {
+    display: flex;
     border: solid, white;
     background-color: white;
-    display: flex;
     gap: 20px;
     padding: 10px;
     align-items: center;
@@ -77,12 +85,12 @@ h1 {
 }
 
 .stories div {
-    display: grid;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column;
     font-size: 10px;
     align-items: center;
     margin-right: 1px;
-    color: gray;
+    color: #747474;
 }
 
 .stories p {
@@ -110,9 +118,9 @@ h1 {
     display: flex;
     justify-content:flex-start;
     flex-wrap: wrap;
+    margin-left: 20px;
     align-items: center;
     gap: 20px;
-  
 }
 
 .yourprofile img {
@@ -131,9 +139,6 @@ h1 {
 
 }
 
-.otherprofiles {
-    
-}
 
 .otherprofiles div {
     margin-left: 20px;
@@ -153,10 +158,6 @@ h1 {
 .post {
     margin-top: 10px;
     background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 
@@ -173,24 +174,79 @@ h1 {
 
 .postheader {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
 .postbuttons {
-    display: flex;
     gap: 5px;
-    padding: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 .postbuttonright {
-    justify-self: end;
-    padding: 5px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.likesnumber {
+    padding-left: 10px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.comments p {
+    font-size: 15px;
+}
+
+.comment {
+    margin-top: 0px;
+}
+
+.comment p {
+    margin: 5px;
+}
+
+.addcomment {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    align-items: center;
+    justify-content:space-between;
+    border-top: solid #eeeeee;
 
 }
-a {
-    color: blue;
+
+.commenting {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 10px;
 }
+
+.posting {
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #396aa6;
+ }
+
+
 
 @media (max-width: 800px) {
     .recommendations {
@@ -201,3 +257,4 @@ a {
         margin-right: 5vw;
     }
  }
+
