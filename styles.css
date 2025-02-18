@@ -47,6 +47,18 @@ section:hover {
     transition: all 0.2s;
 }
 
+main {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap: 20px;
+    justify-content: center;
+}
+
+main div {
+    border: dotted darkmagenta;
+    padding: 20px;
+}
+
 @media screen and (max-width: 800px) {
     header {
         height: 40vh;
