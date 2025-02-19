@@ -61,8 +61,8 @@ main div {
 
 @media screen and (max-width: 800px) {
     header {
-        height: 40vh;
         text-align: center;
+        padding: 10px;
     }
 
     section {

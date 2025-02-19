@@ -6,23 +6,29 @@ fish: https://thumbs-prod.si-cdn.com/n7Z82GD9Eav_CtpnzizNo66-dKc=/420x240/https:
 */
 
 
+
 const showCat = (ev) => {
     // your code here...
     console.log('update the image to show a cat!');
+    document.getElementById('image-demo').src = "https://cdn.mos.cms.futurecdn.net/VSy6kJDNq2pSXsCzb6cvYF.jpg";
 };
 
 const showDog = (ev) => {
+    
     // your code here...
     console.log('update the image to show a dog!');
+    document.getElementById('image-demo').src = "https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg";
 };
 
 const showBird = (ev) => {
     // your code here...
     console.log('update the image to show a bird!');
+    document.getElementById('image-demo').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Eopsaltria_australis_-_Mogo_Campground.jpg/1200px-Eopsaltria_australis_-_Mogo_Campground.jpg";
 };
 
 const showFish = (ev) => {
     // your code here...
     console.log('update the image to show a fish!');
+    document.getElementById('image-demo').src = "https://t4.ftcdn.net/jpg/02/53/61/69/360_F_253616948_za22DUrpvoM6aBDyPZxXDXf1OVNZFhL4.jpg";
 };
 
