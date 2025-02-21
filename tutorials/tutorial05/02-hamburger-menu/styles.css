@@ -44,11 +44,7 @@ body {
     text-decoration: none;
     color: white;
     display: block;
-}
-
-/* Show menu when active */
-.nav-links.active {
-    right: 0;
+    
 }
 
 /* Hamburger menu button */
@@ -81,6 +77,11 @@ body {
 
 @media (max-width: 768px) {
 
+    .nav-links.active {
+        right: 0;
+        background-color: hotpink;
+    }
+
     .nav-links {
         position: absolute;
         top: 54px;
@@ -88,8 +89,9 @@ body {
         width: 300px;
         background: #333;
         text-align: center;
-        transition: right 0.3s ease-in-out;
+        transition: all 1s ease-in-out;
         flex-direction: column;
+
     }
 
     .nav-links {

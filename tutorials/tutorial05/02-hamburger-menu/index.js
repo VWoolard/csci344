@@ -1,10 +1,9 @@
 // Your code here.
 
 function toggleMenu() {
-    let el = getElementById('menu-toggle');
-    let le = getElementById('button');
-    le.class = "active";
-    el.innerHTML = "<a href=''>Home</a>";
-    el.innerHTML = "<a href=''>Home</a>";
+   document.querySelector('.nav-links').classList.toggle("active");
+   document.querySelector('.menu-toggle').classList.toggle("active");
+//    if (nav.className === "nav-links active") 
+//    nav.className = "nav-links active";
 
 }
