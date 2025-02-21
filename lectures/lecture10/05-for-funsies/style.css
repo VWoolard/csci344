@@ -1,0 +1,57 @@
+canvas {
+    margin-top: 100px;
+    border: solid;
+}
+
+* {
+align-items: center;
+justify-content: center;
+}   
+
+button {
+padding: 20px;
+}
+
+#Mystery {
+    padding: 10px;
+}
+
+#Black {
+    background-color: black;
+}
+
+#White {
+    background-color: white;
+}
+
+#Red {
+    background-color: red;
+}
+
+#Orange {
+    background-color: orange;
+}
+
+#Yellow {
+    background-color: yellow;
+}
+
+#Green {
+    background-color: green;
+}
+
+#Blue {
+    background-color: blue;
+}
+
+#Indigo {
+background-color: darkblue;
+}
+
+#Violet {
+background-color: darkviolet;
+}
+
+.shapeDrawer circle {
+    border-style: none;
+}
