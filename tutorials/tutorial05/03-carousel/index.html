@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
     <title>Carousel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kablammo&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <main>
         <h1>Carousel Exercise</h1>
         <div id="container">
-            <button onclick="moveCarousel('backward')">Back</button>
+            <button onclick="moveCarousel('backward')"><i class="fa-solid fa-arrow-left"></i></button>
             <div id="carousel-track">
                 <!-- 
                  Hidden window to to hold all of the items. 
@@ -30,7 +34,7 @@
                     <img src="https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZnVubnklMjBjYXR8ZW58MHx8MHx8fDA%3D" alt="cat" class="carousel-item">
                 </div>
             </div>
-            <button onclick="moveCarousel('forward')">Forward</button>
+            <button onclick="moveCarousel('forward')"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <p>Credit: Adapted from <a href="https://www.youtube.com/watch?v=Zd8170gwwmc"
                 target="_blank">https://www.youtube.com/watch?v=Zd8170gwwmc</a></p>

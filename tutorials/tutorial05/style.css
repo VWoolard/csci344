@@ -1,0 +1,17 @@
+body {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+body a {
+    border: solid;
+    padding: 30px;
+    background-color:#90bcf1;
+    color: black;
+    font-family: Rubik Puddles;
+    font-size: large;
+    font-weight: 600;
+}
