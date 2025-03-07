@@ -27,17 +27,15 @@ const imagePathList = [
 // 2. Loop through each path in the imagePathList array:
 //      * Create an HTML snippet in memory (for each image)
 //      * Inject the HTML snippet into the cardsContainer within the DOM
-addImages();
+    let container = document.querySelector(".cards");
+    for (let pic of imagePathList) {
+        console.log('pic');
+        let htmlSnippet = `<img src="${pic}" alt="image">`;
+        container.insertAdjacentHTML("beforeend", htmlSnippet);
 
-function addImages() {
-    for (const element of imagePathList) {
-       const selecting = document.querySelector(".cards");
-       const img = document.createElement('img');
-       img.src = element;
-       img.alt = 'alternative text';
-       selecting.append(img);
+    //    const img = document.createElement('img');
+    //    img.src = element;
+    //    img.alt = 'alternative text';
+    //    selecting.append(img);
     };
 
-
-
-};

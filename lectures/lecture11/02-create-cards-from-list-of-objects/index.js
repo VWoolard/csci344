@@ -40,3 +40,21 @@ const people = [
  *   * Use the build-in map method to apply the template (HTML snippet) to each person
  *   * Add the templates to the DOM
  */
+
+function makeCard(person) {
+    let builder = 
+    `<div class="card">
+        <img src="${person.pic}">
+        <p>${person.name}'s high score is: ${person.score}
+        </p>
+            </div>`
+
+    return builder;
+        }
+
+for (let person of people) {
+    let location = document.querySelector(".cards");
+    let htmlSnippet = makeCard(person);
+
+    location.insertAdjacentHTML("afterbegin", htmlSnippet);
+}
