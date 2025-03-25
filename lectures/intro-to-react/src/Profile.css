@@ -1,0 +1,17 @@
+.card {
+    width: 200px;
+    padding: 10px;
+    border: solid 1px black;
+    background-color: hotpink;
+    text-align: center;
+    
+}
+
+.active-card {
+    width: 200px;
+    padding: 10px;
+    border: solid 1px black;
+    background-color: aliceblue;
+    color: hotpink;
+    text-align: center;
+}

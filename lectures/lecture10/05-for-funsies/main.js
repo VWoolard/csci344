@@ -49,6 +49,42 @@ function changeColor(color) {
 
 }
 
+function changeColorFill(color) {
+    console.log(color);
+    if (color === 'black') {
+     canvas.fill('black');
+    } else if (color === 'white') {
+        fill('white');
+        stroke('white');
+       } else if (color === 'red') {
+        fill('red');
+        stroke('red');
+       } else if (color === 'orange') {
+        fill('orange');
+        stroke('orange');
+       } else if (color === 'yellow') {
+        fill('yellow');
+        stroke('yellow');
+       } else if (color === 'green') {
+        fill('green');
+        stroke('green');
+       } else if (color === 'blue') {
+        fill('blue');
+        stroke('blue');
+       } else if (color === 'indigo') {
+        fill('darkblue');
+        stroke('darkblue');
+       } else if (color === 'violet') {
+        fill('darkviolet');
+        stroke('darkviolet');
+       } else if (color === 'mystery') {
+        let le =  getColor();
+        fill(le);
+        stroke(le);
+       } 
+    }
+
+
 function getColor() {
     let r = Math.random() * 255;
     let g = Math.random() * 255;
