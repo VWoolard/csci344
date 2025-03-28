@@ -8,6 +8,10 @@ async function initializeScreen() {
     token = await getToken();
     showNav();
     getPosts();
+    getProfile();
+    getSuggestions();
+    getStories();
+
 }
 
 async function getToken() {
@@ -24,6 +28,93 @@ function showNav() {
             </ul>
         </nav>
     `;
+}
+
+//await / async syntax:
+async function getProfile() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/profile/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+    showUsername(data);
+}
+
+function showUsername(user) {
+    const template = `
+            <img src="${user.thumb_url}" alt="profile pic" class="rounded-full w-16" />
+            <h2 class="font-Comfortaa font-bold text-2xl">${username}</h2>
+    `;
+    const container = document.querySelector('#profile');
+    container.insertAdjacentHTML('beforebegin', template); 
+}
+
+async function getSuggestions() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/suggestions/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+    renderSuggestions(data);
+}
+
+
+function renderSuggestion(suggestion) {
+const template = `
+<section class="flex justify-between items-center mb-4 gap-2">
+<img src="${suggestion.thumb_url}" class="rounded-full" />
+<div class="w-[180px]">
+    <p class="font-bold text-sm">${suggestion.username}</p>
+    <p class="text-gray-500 text-xs">suggested for you</p>
+</div>
+<button class="text-blue-500 text-sm py-2">follow</button>
+</section>
+            `;
+            const container = document.querySelector('#suggestions');
+            container.insertAdjacentHTML('beforeend', template); 
+};
+
+
+function renderSuggestions(suggestionListJSON) {
+    suggestionListJSON.forEach(renderSuggestion);
+}
+
+
+async function getStories() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/stories/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+    renderStories(data);
+
+}
+
+function renderStory(story) {
+const template = `
+            <div class="flex flex-col justify-center items-center">
+                <img src="${story.user.thumb_url}" class="rounded-full border-4 border-gray-300" />
+                <p class="text-xs text-gray-500">${story.user.username}</p>
+            </div>
+            `;
+            const container = document.querySelector('#stories');
+            container.insertAdjacentHTML('beforeend', template);
+};
+
+function renderStories(storiesListJSON) {
+    storiesListJSON.forEach(renderStory);
 }
 
 // implement remaining functionality below:
@@ -55,8 +146,8 @@ function renderPost(postJSON) {
                 <div class="flex justify-between text-2xl mb-3">
                     <div>
                         ${getLikeButton(postJSON)}
-                        <button><i class="far fa-comment"></i></button>
-                        <button><i class="far fa-paper-plane"></i></button>
+                        <button><i class="far fa-comment" alt="comment icon"></i></button>
+                        <button><i class="far fa-paper-plane" alt="share icon"></i></button>
                     </div>
                     <div>
                         ${getBookmarkButton(postJSON)}
@@ -79,10 +170,10 @@ function renderPost(postJSON) {
             </div>
             <div class="flex justify-between items-center p-3">
                 <div class="flex items-center gap-3 min-w-[80%]">
-                    <i class="far fa-smile text-lg"></i>
+                    <i class="far fa-smile text-lg" alt="emoji icon"></i>
                     <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment...">
                 </div>
-                <button class="text-blue-500 py-2">Post</button>
+                <button class="text-blue-700 py-2">Post</button>
             </div>
         </section>
     `;
@@ -99,7 +190,7 @@ function showComments(comments) {
     if (comments.length > 1) {
         const lastComment = comments[comments.length - 1];
         return `
-        <button class="text-blue-500">View All ${comments.length} Comments</button>
+        <button class="text-blue-700">View All ${comments.length} Comments</button>
         <p><strong>${lastComment.user.username}</strong> ${lastComment.text}<p>
         `;
     } 
@@ -109,22 +200,15 @@ function showComments(comments) {
     return '';
 }
 
-function getLikeButton(postJSON) {
-    let iconClass = "far";
-    if (postJSON.current_user_like_id) {
-        iconClass = "fas text-red-500"
-    }
-    return `<button><i class="${iconClass} fa-heart"></i></button>`
-}
 
 function getBookmarkButton(postJSON) {
     //already bookmarked
    if (postJSON.current_user_bookmark_id) {
-        return `<button onclick="deleteBookmark(${postJSON.current_user_bookmark_id})"><i class="fas fa-bookmark"></i></button>`;
+        return `<button onclick="deleteBookmark(${postJSON.current_user_bookmark_id})"><i class="fas fa-bookmark" alt="bookmark icon"></i></button>`;
    //not bookmarked
     } else {
         return `<button onclick="createBookmark(${postJSON.id})">
-        <i class="far fa-bookmark"></i>
+        <i class="far fa-bookmark" alt="bookmakr icon"></i>
         </button>`;
    }
 }
@@ -159,40 +243,69 @@ window.deleteBookmark = async function(bookmarkId) {
     console.log(data);
 }
 
-function renderBookmarkButton() {
-    let template = "";
-    if (postJSON.current_user_bookmark_id) {
-    template = `
-        <button onclick="window.createBookmark(${postJSON.id})">
-            <i class="fa-solid fa-bookmark"></i>
-        </button>
-    `;
-} else {
-    template = `
-    <button onclick="window.createBookmark(${postJSON.id})">
-        <i class="fa-regular fa-bookmark"></i>
-    </button>
-`;
-}
-    return template;
+// function renderBookmarkButton() {
+//     let template = "";
+//     if (postJSON.current_user_bookmark_id) {
+//     template = `
+//         <button onclick="window.createBookmark(${postJSON.id})">
+//             <i class="fa-solid fa-bookmark"></i>
+//         </button>
+//     `;
+// } else {
+//     template = `
+//     <button onclick="window.createBookmark(${postJSON.id})">
+//         <i class="fa-regular fa-bookmark"></i>
+//     </button>
+// `;
+// }
+//     return template;
+// }
+
+function getLikeButton(postJSON) {
+    let iconClass = "far";
+    //already liked
+   if (postJSON.current_user_like_id) {
+        return `<button onclick="deleteLike(${postJSON.current_user_like_id})"><i class="${iconClass} fa-heart" alt="like icon"></i></button>`;
+   //not liked
+    } else {
+        iconClass = "fas text-red-500";
+        return `<button onclick="createLike(${postJSON.id})">
+        <i class="${iconClass} fa-heart" alt="like icon"></i>
+        </button>`;
+   }
 }
 
-function renderLikeButton() {
-    let template = "";
-    if (postJSON.current_user_like_id) {
-    template = `
-        <button onclick="window.createLikeButton(${postJSON.id})">
-            <i class="fa-solid fa-heart"></i>
-        </button>
-    `;
-} else {
-    template = `
-    <button onclick="window.createLikeButton(${postJSON.id})">
-        <i class="fa-regular fa-bookmark"></i>
-    </button>
-`;
+
+
+window.createLike = async function(postId) {
+    const postData = {
+        post_id: postId,
+    };    
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/likes/", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(postData)
+    }
+);
+    const data = await response.json();
+    console.log(data);
 }
-    return template;
+
+window.deleteLike = async function(likeId) { 
+    const response = await fetch(`https://photo-app-secured.herokuapp.com/api/likes/${likeId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+    }
+);
+    const data = await response.json();
+    console.log(data);
 }
+
 // after all of the functions are defined, invoke initialize at the bottom:
 initializeScreen();
