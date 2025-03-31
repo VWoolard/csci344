@@ -110,7 +110,32 @@ function getImageURLs() {
     newArray = newArray.filter(imgURL => imgURL !== undefined);
     return newArray;
 }
+// const urls = getImageURLs();
+// console.log(urls);
 
-const urls = getImageURLs();
+function getOver500RTs() {
+    let arrayTwo =  statuses.map(status => status.screen_name);
+    arrayTwo.filter(statuses => statuses.retweet_count >= 500);
+    return arrayTwo;
+}
+// const urls = getOver500RTs();
+// console.log(urls);
+
+function mostRetweets() {
+    initialVal = 0;
+    return statuses.reduce((initialVal = 0, maxStatus, status) => {
+         status.retweet_count > maxStatus.retweets ? status : maxStatus;
+    }, statuses[0]);
+}
+
+// const urls = mostRetweets();
+// console.log(urls);
+
+function numberOfRetweets() {
+    initialVal = 0;
+    return statuses.reduce((initialVal, status) => initialVal + status.retweet_count);
+    // return numberOfRTs;
+};
+
+const urls = numberOfRetweets();
 console.log(urls);
-
