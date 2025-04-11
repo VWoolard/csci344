@@ -193,7 +193,7 @@ function showComments(comments) {
     if (comments.length > 1) {
         const lastComment = comments[comments.length - 1];
         return `
-        <button caria-label="view all" lass="text-blue-700">View All ${comments.length} Comments</button>
+        <button aria-label="view all" lass="text-blue-700">View All ${comments.length} Comments</button>
         <p><strong>${lastComment.user.username}</strong> ${lastComment.text}<p>
         `;
     } 
