@@ -10,29 +10,29 @@ export default function Post({postData, token}) {
         <section className="bg-white border mb-10">
         <div className="p-4 flex justify-between">
             <h3 className="text-lg font-Comfortaa font-bold">{postData.user.username}</h3>
-            <button className="icon-button"><i className="fas fa-ellipsis-h"></i></button>
+            <button aria-label="more" className="icon-button"><i className="fas fa-ellipsis-h"></i></button>
         </div>
         <img src={postData.image_url} alt="image" width="300" height="300"
             className="w-full bg-cover"></img>
         <div className="p-4">
             <div className="flex justify-between text-2xl mb-3">
                 <div>
-                    <Like likeId={postData.current_user_like_id} postId={postData.id} token={token}></Like>
-                    <button><i className="far fa-comment" ></i> </button>
-                    <button><i className="far fa-paper-plane" ></i> </button>
+                    <Like likeId={postData.current_user_like_id} postId={postData.id} token={token} aria-label="like"></Like>
+                    <button><i className="far fa-comment" aria-label="comment"></i> </button>
+                    <button><i className="far fa-paper-plane" aria-label="share"></i> </button>
                 </div>
                 <div>
-                    <Bookmark bookmarkId={postData.current_user_bookmark_id} postId={postData.id} token={token}></Bookmark>
+                    <Bookmark bookmarkId={postData.current_user_bookmark_id} postId={postData.id} token={token} aria-label="bookmark"></Bookmark>
                 </div>
             </div>
             <p className="font-bold mb-3">{postData.likes.length} likes</p>
             <div className="text-sm mb-3">
                 <p>
-                    <strong>{postData.user.username}  </strong>{postData.caption}<button className="button">more</button>
+                    <strong>{postData.user.username}  </strong>{postData.caption}  <button className="button text-blue-700" aria-label="expandtext" >more</button>
                 </p>
             </div>
             <p className="text-sm mb-3">
-                {/* <strong>{postData.comments[0].text} </strong> */}
+                {/* <strong>{postData.comments.text} </strong> */}
                 Here is a comment text text text text text text text text.
             </p>
             <p className="text-sm mb-3">
@@ -46,7 +46,7 @@ export default function Post({postData, token}) {
                 <i className="far fa-smile text-lg"></i>
                 <input type="text" className="min-w-[80%] focus:outline-none" placeholder="Add a comment..." />
             </div>
-            <button className="text-blue-500 py-2">Post</button>
+            <button className="text-blue-500 py-2" aria-label="post">Post</button>
         </div>
         
         </section>

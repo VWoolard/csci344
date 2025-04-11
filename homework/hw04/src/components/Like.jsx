@@ -26,11 +26,11 @@ export default function Like({ token, likeId, postId }) {
 
     if (stateLikeId) {
         return <button onClick={deleteLike}>
-            <i className="fas text-red-500 fa-heart">
+            <i className="fas text-red-500 fa-heart" aria-label="deletelike">
                 </i></button>
     } else {
         return <button onClick={createLike}>
-            <i className="far fa-heart" ></i>
+            <i className="far fa-heart" aria-label="createlike"></i>
             </button>
     }
 }

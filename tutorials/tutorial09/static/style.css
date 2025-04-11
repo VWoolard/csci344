@@ -25,6 +25,24 @@ nav ul {
 
 main {
     margin: 3vh;
+    display:grid;
+    border: solid lightgray;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+width: 197px
+
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    margin-left:10px;
+    margin-right:10px;
 }
 
 

@@ -14,12 +14,22 @@
 <body>
     {% include 'includes/header.html' %}
 
-    <main>
-        <p>Search location: {{location}}</p>
-        <p>Search term: {{search_term or 'None Specified'}}</p>
+    <main class="grid-container">
+        <!-- <p>Search location: {{location}}</p> -->
+        <!-- <p>Search term: {{search_term or 'None Specified'}}</p>
         <p>Data: {{ restaurant }}</p>
-        <h2>Top Restaurant:</h2>
-        <p>Name: {{ restaurant.get('name') }}</p>
+        <h2>Top Restaurant:</h2> -->
+        <div>
+        <p>{{restaurant.get('name')}}</p>
+        <img src="{{restaurant.get('image_url')}}
+        " alt="restuarent">
+        <p>{{restaurant.get('display_address')}}</p>
+        <section>
+        <p>{{restaurant.get('price')}}</p>
+        <p>{{restaurant.get('rating')}}<i class="fa-regular fa-star"></i></p> 
+        <p>{{restaurant.get('review_count')}} Reviews</p>
+    </section>
+        </div>
     </main>
 </body>
 

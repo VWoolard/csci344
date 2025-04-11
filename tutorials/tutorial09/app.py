@@ -45,7 +45,8 @@ def home():
 ##############################
 @app.route('/message')
 def exercise1():
-    return 'Hello world!'
+   
+    return f'Hello {current_user["first_name"]} {current_user["last_name"]}!'
 
 
 ###########################################
@@ -58,7 +59,7 @@ def exercise2():
     with open('data.json') as f:
         data = json.load(f)
     print(data)
-    return json.dumps({})
+    return json.dumps(data)
     
 
 
@@ -79,12 +80,15 @@ e.g., http://127.0.0.1:5000/yelp-proxy/location=NY,%20NY&term=chinese&count=3
 @app.route('/data/yelp/')
 @app.route('/data/yelp')
 def exercise3():
-    search_term = 'pizza'
-    location = 'Asheville, NC'
+    search_term = request.args.get('term')
+    location = request.args.get('location')
     count = 10
     # go fetch data from another server and give it to the requestor:
     base_url = 'https://www.apitutor.org/yelp/simple/v3/businesses/search'
-    url = f'{base_url}?location={location}&term={search_term}&limit={count}'
+    url = f'{base_url}?location={location}&term={search_term}&limit={count}'.format(
+        location=location,
+        search_term=search_term,
+        count=5)
     response = requests.get(url)
     data = response.json()
     return json.dumps(data)
@@ -97,14 +101,17 @@ def exercise3():
 @app.route('/ui/quote')
 def exercise4():
     import json
+    import random
     with open('data.json') as f:
         quotes = json.load(f)
     print(quotes)
+    quote = random.choice(quotes)
+    print(quote)
     return render_template(
         'quote-of-the-day.html',
-        user=current_user
+        user=current_user,
+        quote=quote
     )
-
 
 #########################################################
 # Exercise 5: Merge someone else's data with a template #
