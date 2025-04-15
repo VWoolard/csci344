@@ -14,7 +14,7 @@ export default function Stories({ token }) {
                 console.log(data);
         
                 //setting a state variable
-                console.log("Setting a state variable to redraw the screen after the sto are set...")
+                console.log("Setting a state variable to redraw the screen after the stories are set...")
                 setStories(data);
             }
         

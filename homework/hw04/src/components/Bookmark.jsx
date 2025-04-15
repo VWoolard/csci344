@@ -25,11 +25,11 @@ export default function Bookmark({ token, bookmarkId, postId }) {
 
     if (stateBookmarkId) {
         return <button onClick={deleteBookmark}>
-            <i className="fas fa-bookmark" aria-label="deletebookmark">
+            <i className="fas fa-bookmark" aria-label="deletebookmark" aria-checked="false" role="switch">
                 </i></button>
     } else {
         return <button onClick={createBookmark}>
-            <i className="far fa-bookmark" aria-label="createbookmark" ></i>
+            <i className="far fa-bookmark" aria-label="createbookmark" aria-checked="true" role="switch"></i>
             </button>
     }
 }
