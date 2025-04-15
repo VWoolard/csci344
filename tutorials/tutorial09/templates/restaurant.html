@@ -20,12 +20,12 @@
         <p>Data: {{ restaurant }}</p>
         <h2>Top Restaurant:</h2> -->
         <div>
-        <p>{{restaurant.get('name')}}</p>
+        <p><strong>{{restaurant.get('name')}}</strong></p>
         <img src="{{restaurant.get('image_url')}}
         " alt="restuarent">
         <p>{{restaurant.get('display_address')}}</p>
         <section>
-        <p>{{restaurant.get('price')}}</p>
+        <p><strong>{{restaurant.get('price')}}</strong></p>
         <p>{{restaurant.get('rating')}}<i class="fa-regular fa-star"></i></p> 
         <p>{{restaurant.get('review_count')}} Reviews</p>
     </section>

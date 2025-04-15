@@ -27,15 +27,14 @@ main {
     margin: 3vh;
     display:grid;
     border: solid lightgray;
-    width: 200px;
+    width: 300px;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
 img {
-width: 197px
-
+width: 297px
 }
 
 section {
