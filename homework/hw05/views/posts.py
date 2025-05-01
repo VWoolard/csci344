@@ -5,7 +5,7 @@ from flask_restful import Resource
 
 from models import db
 from models.post import Post
-from views import get_authorized_user_ids
+from views import get_authorized_user_ids, can_view_post
 
 
 def get_path():
@@ -54,14 +54,21 @@ class PostListEndpoint(Resource):
     def post(self):
         # TODO: handle POST logic
         # capture data that the user sent us (and if the user didn't give us the data we need, throw an error!)
-        image_url = request.args.get('image_url') #required
-        caption = request.args.get('captions') #optional
-        alt_text = request.args.get('alt_text') #optional
+        image_url = request.json.get('image_url') #required
+        caption = request.json.get('caption') #optional
+        alt_text = request.json.get('alt_text') #optional
+
 
         if image_url is None:
             return Response(json.dumps({"message": "image_url is a required field"}), mimetype="application/json", status=400)
         
-        return Response(json.dumps({}), mimetype="application/json", status=201)
+        new_post = Post(image_url = image_url,caption = caption,alt_text = alt_text,user_id = self.current_user.id)
+        db.session.add(new_post)
+        db.session.commit()
+        db.session.refresh(new_post)
+        print(new_post)
+
+        return Response(json.dumps(new_post.to_dict()), mimetype="application/json", status=201)
 
 
 class PostDetailEndpoint(Resource):
@@ -72,29 +79,96 @@ class PostDetailEndpoint(Resource):
     def patch(self, id):
         print("POST id=", id)
         # TODO: Add PATCH logic...
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+
+
+
+        # query for the post based on the id from the URL path
+        # validate it (does it even exist? did t
+        # save the updated post tot he database and return to user
+
+        #check if post doesn't exist, send error message
+        post = Post.query.get(id)
+        if post is None:
+            return Response(
+                json.dumps({"Message": f"Post id={id} not found"}),
+                mimetype="application/json",
+                status=404,
+            )
+        # if post not owned by the logged in user, send error message
+        if post.user_id != self.current_user.id:
+            return Response(
+                json.dumps({"Message": f"You are not allowed to modify post id={id}"}),
+                mimetype="application/json",
+                status=403,
+            )
+
+        data = request.json
+        print(data)
+        caption = data.get("caption")
+        image_url = data.get("image_url")
+        alt_text = data.ge("alt_text")
+
+        if caption is not None:
+            post.caption = caption
+        if image_url is not None:
+            post.image_url = image_url
+        if alt_text is not None:
+            post.alt_text = alt_text
+
+        db.session.commit()
+
+        return Response(
+                json.dumps(post.to_dict(user=self.current_user)),
+                mimetype="application/json",
+                status=200,
+            )
 
     def delete(self, id):
         print("POST id=", id)
+        post = Post.query.get(id)
+        if post is None:
+            return Response(
+                json.dumps({"Message": f"Post id={id} not found"}),
+                mimetype="application/json",
+                status=404,
+            )
+        # if post not owned by the logged in user, send error message
+        if post.user_id != self.current_user.id:
+            return Response(
+                json.dumps({"Message": f"You are not allowed to modify post id={id}"}),
+                mimetype="application/json",
+                status=403,
+            )
+        
+        Post.query.filter_by(id=id).delete()
+        db.session.commit()
 
-        # TODO: Add DELETE logic...
         return Response(
-            json.dumps({}),
+            json.dumps({"Message": f"Post id={id} has been successfully deleted."}),
             mimetype="application/json",
             status=200,
         )
 
     def get(self, id):
-        print("POST id=", id)
-        # TODO: Add GET logic...
-        return Response(
-            json.dumps({}),
-            mimetype="application/json",
-            status=200,
-        )
+        can_view = can_view_post(id, self.current_user)
+
+        if (can_view):
+             post = Post.query.get(id)
+             return Response(
+                json.dumps(post.to_dict(user=self.current_user)),
+                mimetype="application/json",
+                status=200,
+            )
+            # query for the post and return it
+        else :
+            return Response(
+                json.dumps({"Message": f"Post id={id} not found"}),
+                mimetype="application/json",
+                status=404,
+            )
 
 
-def initialize_routes(api, current_user):
+def initialize_routes(api, current_user): 
     api.add_resource(
         PostListEndpoint,
         "/api/posts",

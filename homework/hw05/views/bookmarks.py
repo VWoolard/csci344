@@ -6,6 +6,8 @@ from flask_restful import Resource
 from models import db
 from models.bookmark import Bookmark
 
+from views import get_authorized_user_ids
+
 
 class BookmarksListEndpoint(Resource):
 
@@ -14,11 +16,20 @@ class BookmarksListEndpoint(Resource):
 
     def get(self):
         # TODO: Add GET Logic...
-        return Response(
-            json.dumps([]),
-            mimetype="application/json",
-            status=200,
-        )
+        ids_for_me_and_my_friends = get_authorized_user_ids(self.current_user)
+        # [3, 7, 8, 10, 12]
+        bookmarks = Bookmark.query.filter(Bookmark.user_id.in_(ids_for_me_and_my_friends))
+
+        # TODO: add the ability to handle the "limit" query parameter:
+
+        data = [item.to_dict() for item in bookmarks.all()]
+        return Response(json.dumps(data), mimetype="application/json", status=200)
+
+        # return Response(
+        #     json.dumps([]),
+        #     mimetype="application/json",
+        #     status=200,
+        # )
 
     def post(self):
         # TODO: Add POST Logic...

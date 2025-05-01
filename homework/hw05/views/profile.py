@@ -3,6 +3,8 @@ import json
 from flask import Response, request
 from flask_restful import Resource
 
+from models.user import User
+
 
 def get_path():
     return request.host_url + "api/posts/"
@@ -15,11 +17,19 @@ class ProfileDetailEndpoint(Resource):
 
     def get(self):
         # TODO: Add GET logic...
-        return Response(
-            json.dumps({}),
-            mimetype="application/json",
-            status=200,
-        )
+
+        profile = User.query.filter(User.user_id.in_(self.current_user))
+
+        # TODO: add the ability to handle the "limit" query parameter:
+
+        # data = [item.to_dict(user=self.current_user) for item in profile]
+        return Response(json.dumps(profile.to_dict()), mimetype="application/json", status=200)
+
+        # return Response(
+        #     json.dumps({}),
+        #     mimetype="application/json",
+        #     status=200,
+        # )
 
 
 def initialize_routes(api, current_user):
