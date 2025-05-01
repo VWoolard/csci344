@@ -99,14 +99,14 @@ class PostDetailEndpoint(Resource):
             return Response(
                 json.dumps({"Message": f"You are not allowed to modify post id={id}"}),
                 mimetype="application/json",
-                status=403,
+                status=404,
             )
 
         data = request.json
         print(data)
         caption = data.get("caption")
         image_url = data.get("image_url")
-        alt_text = data.ge("alt_text")
+        alt_text = data.get("alt_text")
 
         if caption is not None:
             post.caption = caption
@@ -137,7 +137,7 @@ class PostDetailEndpoint(Resource):
             return Response(
                 json.dumps({"Message": f"You are not allowed to modify post id={id}"}),
                 mimetype="application/json",
-                status=403,
+                status=404,
             )
         
         Post.query.filter_by(id=id).delete()

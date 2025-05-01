@@ -18,12 +18,10 @@ class ProfileDetailEndpoint(Resource):
     def get(self):
         # TODO: Add GET logic...
 
-        profile = User.query.filter(User.user_id.in_(self.current_user))
-
         # TODO: add the ability to handle the "limit" query parameter:
 
         # data = [item.to_dict(user=self.current_user) for item in profile]
-        return Response(json.dumps(profile.to_dict()), mimetype="application/json", status=200)
+        return Response(json.dumps(self.current_user.to_dict()), mimetype="application/json", status=200)
 
         # return Response(
         #     json.dumps({}),

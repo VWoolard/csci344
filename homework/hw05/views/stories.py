@@ -36,7 +36,7 @@ class StoriesListEndpoint(Resource):
 
         # TODO: add the ability to handle the "limit" query parameter:
 
-        data = [item.to_dict(user=self.current_user) for item in stories.all()]
+        data = [item.to_dict() for item in stories.all()]
         return Response(json.dumps(data), mimetype="application/json", status=200)
 
         # return Response(
