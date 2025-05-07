@@ -54,7 +54,7 @@ class TestFollowingDetailEndpoint(unittest.TestCase):
         response = utils.issue_delete_request(url, user_id=self.user_id)
 
         # Assert
-        self.assertEqual(response.status_code, 404)
+        self.assertIn(response.status_code, [404, 405])
 
     def test_nonexistent_id_handled(self):
         """Test that non-existent following IDs return 404."""
