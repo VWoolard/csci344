@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 import { getDataFromServer } from "../server-requests";
 
 
-export default function Profile({ token }) {
-    const [profile, setProfile] = useState({});
+export default function Profile({ profile }) {
+//     const [profile, setProfile] = useState({});
 
-    async function getProfile() {
-            //fetches data from endpoint 
-            const data = await getDataFromServer(token, "/api/profile");
+//     async function getProfile() {
+//             //fetches data from endpoint 
+//             const data = await getDataFromServer(token, "/api/profile");
     
-            //printing that data to the screen
-            console.log(data);
+//             //printing that data to the screen
+//             console.log(data);
     
-            //setting a state variable
-            console.log("Setting a state variable to redraw the screen after the posts are set...")
-            setProfile(data);
-        };
+//             //setting a state variable
+//             console.log("Setting a state variable to redraw the screen after the posts are set...")
+//             setProfile(data);
+//         };
     
-        // useEffect is a built-in function used to handle side-effects when a page first loads
-        useEffect(() => {
-            getProfile();
-        }, []);
+//         // useEffect is a built-in function used to handle side-effects when a page first loads
+//         useEffect(() => {
+//             getProfile();
+//         }, []);
     
     return (
         <header className="flex gap-4 items-center">
