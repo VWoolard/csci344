@@ -12,7 +12,7 @@ export default function NavBar({ username }) {
                     <span className="text-black-700">{username}</span>
                 </li>
                 <li>
-                    <button className="text-blue-700 py-2" aria-label="signout">Sign out</button>
+                    <a className="text-blue-700 py-2" aria-label="signout" href="/logout">Sign out</a>
                 </li>
             </ul>
         </nav>
