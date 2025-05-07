@@ -55,7 +55,7 @@ def custom_static(filename):
     except FileNotFoundError:
         return "File not found, probably because you're in development mode.", 404
 
-
+@decorators.jwt_or_login
 @app.route("/")
 @decorators.jwt_or_login
 def home():

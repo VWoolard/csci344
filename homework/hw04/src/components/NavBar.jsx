@@ -12,7 +12,7 @@ export default function NavBar({ username }) {
             <h1 className="font-Comfortaa font-bold text-2xl">Photo App</h1>
             <ul className="flex gap-4 text-sm items-center justify-center">
                 <li>
-                    <span>{username}‼️</span>
+                    <span>{username}</span>
                 </li>
                 <li>
                     <button onClick={logout} className="text-blue-700 py-2" aria-label="signout">Sign out</button>
