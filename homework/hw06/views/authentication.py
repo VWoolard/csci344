@@ -25,16 +25,23 @@ def login():
         print(username, password)
 
         # Add your logic here...
-
+        the_user = User.query.filter_by(username=username).one_or_none()
+        if the_user is None:
+            return render_template("login.html", message="Bad username")
+        
+        if the_user.check_password(password) is False:
+            return render_template("login.html", message="Bad password")
+               
         # If the user successfully logs into the system, set a JWT access cookie:
-        # access_token = flask_jwt_extended.create_access_token(
-        #     identity=str(user.id)
-        # )
-        # resp = make_response(redirect("/", 302))
-        # flask_jwt_extended.set_access_cookies(resp, access_token)
+        access_token = flask_jwt_extended.create_access_token(
+            identity=str(the_user.id)
+        )
+        resp = make_response(redirect("/", 302))
+        flask_jwt_extended.set_access_cookies(resp, access_token)
 
-        # current_app.logger.info(f"Successful login for user: {username}")
-        # return resp
+        current_app.logger.info(f"Successful login for user: {username}")
+        return resp
+
 
     elif request.method == "GET":
         # show the user the login form:
